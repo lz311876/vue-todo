@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TODO</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="font-awesome.min.css"> -->
+	<style type="text/css">
+		body{
+			padding-top: 100px;		
+		}
+		.container{
+			padding-left: 20px;
+		}
+		li button{
+			float: right;
+			border: 0;
+			padding: 0;
+			background: none;
+			margin-left: 10px;
+		}
+		.com li{
+			text-decoration: line-through;
+		}
+		h3{
+			color: red;
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.1/vue.min.js"></script>
+</head>
+
+<body>
+
+	<div class="row">
+		<div class="container jumbotron col-md-10 col-md-offset-1">
+			<div id="tasks">
+				<h1>Vue.js TODO  <small>By lz311876@163.com</small></h1> <br/>
+				<div class="col-md-8 col-md-offset-1">
+		
+					<form v-on="submit: add">
+						<div class="input-group">
+							<input type="text" v-model="myTask" v-el="myTask" 	class="form-control" placeholder="Enter you todos"/>
+							<span class="input-group-btn">
+								<button class="btn btn-success">ADD</button>
+							</span>
+						</div>
+					</form> 
+				<div>
+				<div class="row">
+					<div class="col-md-5 ">
+						<h3>Incompleted</h3>
+						<ol class="list-group">
+							
+							<li v-repeat="task: tasks | f" class="list-group-item">
+								{{task.body}}
+								
+								
+								<button  v-on="click: remove(task)">&#10007;</button>
+								<button  v-on="click: complete(task)">&#10004;</button>
+							</li>
+						</ol>
+					</div>
+					<div class="col-md-5 col-md-offset-1">
+						<h3>Completed</h3>
+						<ol class="list-group com">
+							
+							<li v-repeat="task: tasks | filterBy true in complete" class="list-group-item">
+								{{task.body}}
+								
+								
+								<button  v-on="click: remove(task)">&#10007;</button>
+								
+							</li>
+						</ol>
+					</div>
+				</div>
+				
+					
+				
+			</div>
+
+		</div>
+	</div>
+
+
+<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/test.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	
+</body>
+</html>
